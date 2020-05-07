@@ -67,6 +67,7 @@ jobs:
     steps:
         # run this action to get workflow conclusion
         # You can get conclusion by env (env.WORKFLOW_CONCLUSION)
+        # https://github.com/marketplace/actions/workflow-conclusion-action
       - uses: technote-space/workflow-conclusion-action@v1.1.1     
       - name: Checking Pull Request
         uses: pause-play/play-action-pr@master
@@ -83,8 +84,6 @@ jobs:
 ##
 ## workflow-conclusion-action
 ##
-
-# https://github.com/marketplace/actions/workflow-conclusion-action
 
  # slack:
  #    name: Slack
