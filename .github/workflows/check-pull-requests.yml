@@ -37,6 +37,7 @@ jobs:
     name: lint
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: "running lint..."
         run: |
           echo "FIXME Plug Lint here"
@@ -54,6 +55,7 @@ jobs:
     #   matrix:
     #     node: ['5.30', '5.28']
     steps:
+      # no need to checkout
       - name: using install-with-cplay
         uses: perl-actions/install-with-cplay@cplay-ci      
     # FIXME check the installation of module
