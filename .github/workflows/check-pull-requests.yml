@@ -66,9 +66,10 @@ jobs:
     needs: tests
     if: always() # set always
     steps:
+      - uses: actions/checkout@v2
         # run this action to get workflow conclusion
-        # You can get conclusion by env (env.WORKFLOW_CONCLUSION)
-      - uses: technote-space/workflow-conclusion-action@v1.1.1     
+        # You can get conclusion by env (env.WORKFLOW_CONCLUSION)      
+      - uses: technote-space/workflow-conclusion-action@v1.1.1
       - name: Checking Pull Request
         uses: pause-play/play-action-pr@master
         with:
