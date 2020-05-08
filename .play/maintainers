@@ -1,0 +1,13 @@
+##
+## This file contains a list of GitHub user or team
+##		which can submit PR which can be merged without a review
+##
+
+## these two teams are always enabled by default
+# teams/p5-admins
+# teams/p5-bulk
+
+teams/customname
+
+githubuser1
+user2
