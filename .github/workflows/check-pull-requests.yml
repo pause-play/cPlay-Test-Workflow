@@ -48,7 +48,7 @@ jobs:
 ## Running the test suite
 ##
   tests:
-    name: "Testing with cPlay"
+    name: "Testing with cnext"
     needs: lint
     runs-on: ubuntu-latest
     # strategy:
@@ -58,7 +58,7 @@ jobs:
     steps:
       # no need to checkout
       - name: using install-with-next
-        uses: perl-actions/install-with-next@next-ci      
+        uses: perl-actions/install-with-cnext@next-ci      
     # FIXME check the installation of module
 
 ##
