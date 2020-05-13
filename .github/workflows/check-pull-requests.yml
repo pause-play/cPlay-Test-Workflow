@@ -41,7 +41,7 @@ jobs:
       - name: "running lint..."
         run: |
           echo "FIXME Plug Lint here"
-          # check if there is no conflict with the namespaces          
+          # check if there is no conflict with the namespaces
           true
 
 ##
@@ -57,8 +57,8 @@ jobs:
     #     node: ['5.30', '5.28']
     steps:
       # no need to checkout
-      - name: using install-with-next
-        uses: perl-actions/install-with-cnext@next-ci      
+      - name: using install-with-cnext
+        uses: perl-actions/install-with-cnext@cnext-ci
     # FIXME check the installation of module
 
 ##
@@ -71,13 +71,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         # run this action to get workflow conclusion
-        # You can get conclusion by env (env.WORKFLOW_CONCLUSION)  
-        # https://github.com/marketplace/actions/workflow-conclusion-action    
+        # You can get conclusion by env (env.WORKFLOW_CONCLUSION)
+        # https://github.com/marketplace/actions/workflow-conclusion-action
       - uses: technote-space/workflow-conclusion-action@v1.1.1
       - name: Checking Pull Request
         uses: next-cpan/next-ci-action@master
         with:
-          status: ${{ env.WORKFLOW_CONCLUSION }} # neutral, success, cancelled, timed_out, failure        
+          status: ${{ env.WORKFLOW_CONCLUSION }} # neutral, success, cancelled, timed_out, failure
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         #if: env.WORKFLOW_CONCLUSION == 'failure'
