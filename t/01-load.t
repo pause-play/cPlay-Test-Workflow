@@ -11,4 +11,6 @@ pass 2;
 
 pass 5;
 
+pass 'again';
+
 done_testing;
