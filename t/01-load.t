@@ -11,3 +11,5 @@ is( cPlay::Test::Module->run, q[Hello World], "run" );
 pass "This is a success";
 
 done_testing;
+
+__END__
