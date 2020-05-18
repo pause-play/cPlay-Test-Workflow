@@ -1,4 +1,4 @@
-name: "Approved Pull Request"
+name: "Check PR Approval"
 
 on:
  pull_request_review:
@@ -24,6 +24,7 @@ jobs:
        run: |
           echo "$GITHUB_CONTEXT"
           echo $ENVIRONMENT
+     - uses: actions/checkout@v2
      - name: Checking Pull Request Approval
        uses: next-cpan/next-ci-action@master
        with:
@@ -31,3 +32,7 @@ jobs:
        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BOT_ACCESS_TOKEN: ${{ secrets.BOT_ACCESS_TOKEN }}
+
+# pull_request.review.state: approved
+# "event_name": "pull_request_review",
+# event.action: submitted
