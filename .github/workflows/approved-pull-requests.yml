@@ -1,0 +1,24 @@
+name: "Approved Pull Request"
+
+on:
+ pull_request_review:
+   types: [submitted]
+
+jobs:
+
+##
+## Running the next-ci-action
+##
+  pr_approval:
+    runs-on: ubuntu-latest
+    steps:
+      - name: cat GITHUB_EVENT_PATH
+        run: |
+          cat "${{ GITHUB_EVENT_PATH }}"
+      - name: Checking Pull Request Approval
+        uses: next-cpan/next-ci-action@master
+        with:
+          action: pr_approval
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BOT_ACCESS_TOKEN: ${{ secrets.BOT_ACCESS_TOKEN }}
