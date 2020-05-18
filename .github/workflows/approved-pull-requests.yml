@@ -24,10 +24,10 @@ jobs:
        run: |
           echo "$GITHUB_CONTEXT"
           echo $ENVIRONMENT
-      - name: Checking Pull Request Approval
-        uses: next-cpan/next-ci-action@master
-        with:
+     - name: Checking Pull Request Approval
+       uses: next-cpan/next-ci-action@master
+       with:
           action: pr_approval
-        env:
+       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BOT_ACCESS_TOKEN: ${{ secrets.BOT_ACCESS_TOKEN }}
