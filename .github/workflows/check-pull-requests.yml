@@ -1,5 +1,4 @@
 name:    "Check Pull Request"
-version: 1
 # version: XXXXX
 
 on:
