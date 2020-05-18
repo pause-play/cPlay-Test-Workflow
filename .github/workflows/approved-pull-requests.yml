@@ -17,9 +17,13 @@ jobs:
   pr_approval:
     runs-on: ubuntu-latest
     steps:
-      - name: cat GITHUB_EVENT_PATH
-        run: |
-          cat "${{ GITHUB_EVENT_PATH }}"
+     - name: Dump GitHub context
+       env:
+          GITHUB_CONTEXT: ${{ tojson(github) }}
+          ENVIRONMENT: ${{ github.event.deployment.environment }}
+       run: |
+          echo "$GITHUB_CONTEXT"
+          echo $ENVIRONMENT
       - name: Checking Pull Request Approval
         uses: next-cpan/next-ci-action@master
         with:
