@@ -1,4 +1,6 @@
-name: "Check Pull Request"
+name:    "Check Pull Request"
+version: 1
+# version: XXXXX
 
 on:
   pull_request:
@@ -6,6 +8,7 @@ on:
     branches: ["p5"]
 #  pull_request_review:
 #    types: [submitted]
+
 
 # name: automerge
 # on:
@@ -40,8 +43,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: "running lint..."
         run: |
+          echo "update the NEXT.json"
           echo "FIXME Plug Lint here"
           # check if there is no conflict with the namespaces
+          # .... NEXT.json using .next/hints.yaml
           true
 
 ##
