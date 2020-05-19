@@ -1,0 +1,21 @@
+name: "Close Stale Issues"
+
+on:
+  schedule:
+  - cron: "0 5 * * *"
+           #MIN HOUR DOM MON DOW CMD
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v2
+     # need to regenerate everything before merge...
+     #    regenerate NEXT.json [can have multiple PRs not merged at the same time...]
+     - name: Checking Stale PRs
+       uses: next-cpan/next-ci-action@master
+       with:
+          stage: stale
+       env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BOT_ACCESS_TOKEN: ${{ secrets.BOT_ACCESS_TOKEN }}
