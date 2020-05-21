@@ -106,8 +106,7 @@ jobs:
   merge:
     runs-on: ubuntu-latest
     needs: tests
-    if: github.event.repository.owner.login == 'next-cpan'
-    if: always() # set always
+    if: always() && github.event.repository.owner.login == 'next-cpan'
     steps:
       - uses: actions/checkout@v2
         # run this action to get workflow conclusion
