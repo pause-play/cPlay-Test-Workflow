@@ -35,17 +35,23 @@ jobs:
 # view ideas from https://peterevans.dev/posts/github-actions-how-to-automate-code-formatting-in-pull-requests/
 
   lint:
-    name: lint
+    # if: github.actor == github.event.repository.owner.login
+
+    name: Running lint checks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: context
+        run: |
+          echo "github.actor ${{ github.actor }}"
+          echo "github.event.repository.owner.login ${{ github.event.repository.owner.login }}"
       - name: "running lint..."
         run: |
           echo "rebase..."
           echo "Confirm no generated files are altered"
           echo "Update the NEXT.json using .next/hints.yaml"
           echo "Assure VERSION not bumped in NEXT.json"
-          echo "Check no new modules owned by other distros"          
+          echo "Check no new modules owned by other distros"
           true
       # maybe push to a local branch check_pr_$id so unit tests can start using it
       - name: Checking Pull Request

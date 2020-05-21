@@ -12,6 +12,10 @@ jobs:
      - uses: actions/checkout@v2
      # need to regenerate everything before merge...
      #    regenerate NEXT.json [can have multiple PRs not merged at the same time...]
+     - name: context
+       run: |
+          echo "github.actor ${{ github.actor }}"
+          echo "github.event.repository.owner.login ${{ github.event.repository.owner.login }}"
      - name: Checking Stale PRs
        uses: next-cpan/next-ci-action@master
        with:
