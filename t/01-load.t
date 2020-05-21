@@ -10,6 +10,6 @@ is( cPlay::Test::Module->run, q[Hello World], "run" );
 
 pass "This is a success";
 
-ok 51;
+ok 51, 'change from user';
 
 done_testing;
