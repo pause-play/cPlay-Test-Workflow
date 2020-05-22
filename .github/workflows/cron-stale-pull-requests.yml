@@ -1,4 +1,4 @@
-name: "Close Stale Issues"
+name: "Daily Cron - Check Stale PRs"
 
 on:
   schedule:
@@ -9,6 +9,7 @@ on:
 jobs:
   stale:
     runs-on: ubuntu-latest
+    #if: github.repository_owner == 'next-cpan'
     steps:
       - uses: actions/checkout@v2
       # need to regenerate everything before merge...
