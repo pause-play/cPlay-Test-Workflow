@@ -6,43 +6,44 @@ name: Issue Comments
 
 jobs:
   check_comments:
-      name: Check comments for /test
-      steps:
-        - name: Check for Command
-          id: command
-          uses: xt0rted/slash-command-action@v1
-          with:
-            repo-token: ${{ secrets.GITHUB_TOKEN }}
-            command: test
-            reaction: "true"
-            reaction-type: "rocket"
-            allow-edits: "false"
-            permission-level: admin
-        - name: Act on the command
-          run: echo "The command was '${{ steps.command.outputs.command-name }}' with arguments '${{ steps.command.outputs.command-arguments }}'"
-        - run: echo "Continue"
-        ## dump
-        - name: Dump GitHub context
-          env:
-            GITHUB_CONTEXT: ${{ toJson(github) }}
-          run: echo "$GITHUB_CONTEXT"
-        - name: Dump job context
-          env:
-            JOB_CONTEXT: ${{ toJson(job) }}
-          run: echo "$JOB_CONTEXT"
-        - name: Dump steps context
-          env:
-            STEPS_CONTEXT: ${{ toJson(steps) }}
-          run: echo "$STEPS_CONTEXT"
-        - name: Dump runner context
-          env:
-            RUNNER_CONTEXT: ${{ toJson(runner) }}
-          run: echo "$RUNNER_CONTEXT"
-        - name: Dump strategy context
-          env:
-            STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-          run: echo "$STRATEGY_CONTEXT"
-        - name: Dump matrix context
-          env:
-            MATRIX_CONTEXT: ${{ toJson(matrix) }}
-          run: echo "$MATRIX_CONTEXT"        
+    runs-on: ubuntu-latest
+    name: Check comments for /test
+    steps:
+      - name: Check for Command
+        id: command
+        uses: xt0rted/slash-command-action@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          command: test
+          reaction: "true"
+          reaction-type: "rocket"
+          allow-edits: "false"
+          permission-level: admin
+      - name: Act on the command
+        run: echo "The command was '${{ steps.command.outputs.command-name }}' with arguments '${{ steps.command.outputs.command-arguments }}'"
+      - run: echo "Continue"
+      ## dump
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+      - name: Dump runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+        run: echo "$RUNNER_CONTEXT"
+      - name: Dump strategy context
+        env:
+          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+        run: echo "$STRATEGY_CONTEXT"
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
