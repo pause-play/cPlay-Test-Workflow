@@ -77,7 +77,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BOT_ACCESS_TOKEN: ${{ secrets.BOT_ACCESS_TOKEN }}
-          PR_NUMBER: ${{ event.issue.number }}
+          PR_NUMBER: ${{ github.event.issue.number }}
 
   tests:
     name: "Testing with cnext"
