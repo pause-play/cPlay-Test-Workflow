@@ -8,6 +8,7 @@ jobs:
   check_comments:
     runs-on: ubuntu-latest
     name: Check comments for /test
+    if: github.event.issue.pull_request != null
     steps:
       - name: Check for Command
         id: command
