@@ -9,8 +9,13 @@ jobs:
   check_comments:
     runs-on: ubuntu-latest
     name: Check comments for /test
-    if: github.event.issue.pull_request != null
+    if: github.repository_owner == 'next-cpan' && github.event.issue.pull_request != null
     steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      # command
       - name: Check for Command
         id: command
         uses: xt0rted/slash-command-action@v1
@@ -26,10 +31,6 @@ jobs:
       - run: echo "${{ github.repository_owner }}"
       - run: echo "Continue"
       ## dump
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
       - name: Dump job context
         env:
           JOB_CONTEXT: ${{ toJson(job) }}
