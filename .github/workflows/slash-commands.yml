@@ -5,6 +5,7 @@ name: Issue Comments
 #   also view https://github.com/peter-evans/slash-command-dispatch
 
 jobs:
+
   check_comments:
     runs-on: ubuntu-latest
     name: Check comments for /test
@@ -22,6 +23,7 @@ jobs:
           permission-level: admin
       - name: Act on the command
         run: echo "The command was '${{ steps.command.outputs.command-name }}' with arguments '${{ steps.command.outputs.command-arguments }}'"
+      - run: echo "${{ github.repository_owner }}"
       - run: echo "Continue"
       ## dump
       - name: Dump GitHub context
