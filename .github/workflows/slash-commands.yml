@@ -57,10 +57,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: context
-        run: |
-          echo "github.actor ${{ github.actor }}"
-          echo "github.event.repository.owner.login ${{ github.event.repository.owner.login }}"
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: "running lint..."
         run: |
           echo "rebase..."
